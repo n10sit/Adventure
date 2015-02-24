@@ -39,12 +39,12 @@ public class guilogin extends JPanel {
         jcomp6.setBounds (290, 240, 100, 25);
     }
 
-
+   /* stuff we need to add to the main
     public static void main (String[] args) {
         JFrame frame = new JFrame ("MyPanel");
         frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add (new guilogin());
         frame.pack();
         frame.setVisible (true);
-    }
+    } */
 }
