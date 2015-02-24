@@ -1,0 +1,50 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.event.*;
+
+public class guilogin extends JPanel {
+    private JLabel logonlabel;
+    private JPasswordField password;
+    private JTextField user;
+    
+    private JLabel userlabel;
+    private JLabel passwordlabel;
+    private JButton jcomp6;
+
+    public guilogin() {
+      
+        logonlabel = new JLabel ("Login to Game");
+        password = new JPasswordField (5);
+        user = new JTextField (5);
+        userlabel = new JLabel ("Username:");
+        passwordlabel = new JLabel ("Password:");
+        jcomp6 = new JButton ("Enter");
+
+        setPreferredSize (new Dimension (95, 41));
+        setLayout (null);
+        
+        add (logonlabel);
+        add (password);
+        add (user);
+        add (userlabel);
+        add (passwordlabel);
+        add (jcomp6);
+
+        logonlabel.setBounds (80, 0, 150, 25);
+        password.setBounds (-5, 185, 100, 25);
+        user.setBounds (0, 105, 100, 25);
+        userlabel.setBounds (0, 80, 100, 25);
+        passwordlabel.setBounds (0, 165, 100, 25);
+        jcomp6.setBounds (290, 240, 100, 25);
+    }
+
+
+    public static void main (String[] args) {
+        JFrame frame = new JFrame ("MyPanel");
+        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add (new guilogin());
+        frame.pack();
+        frame.setVisible (true);
+    }
+}
