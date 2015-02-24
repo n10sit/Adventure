@@ -1,0 +1,46 @@
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.event.*;
+
+public class GuiWalk extends JPanel {
+    private JButton jcomp1;
+    private JButton jcomp2;
+    private JButton jcomp3;
+    private JLabel jcomp4;
+    private JButton jcomp5;
+
+    public GuiWalk() {
+        jcomp1 = new JButton ("West");
+        jcomp2 = new JButton ("South");
+        jcomp3 = new JButton ("North");
+        jcomp4 = new JLabel ("Map");
+        jcomp5 = new JButton ("East");
+
+        setPreferredSize (new Dimension (935, 599));
+        setLayout (null);
+
+        add (jcomp1);
+        add (jcomp2);
+        add (jcomp3);
+        add (jcomp4);
+        add (jcomp5);
+
+        //set component bounds (only needed by Absolute Positioning)
+        jcomp1.setBounds (-5, 25, 105, 550);
+        jcomp2.setBounds (0, 575, 935, 25);
+        jcomp3.setBounds (-40, 0, 980, 25);
+        jcomp4.setBounds (665, 65, 30, 35);
+        jcomp5.setBounds (835, 25, 100, 555);
+    }
+
+/*
+    public static void main (String[] args) {
+        JFrame frame = new JFrame ("GuiWalk");
+        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add (new GuiWalk());
+        frame.pack();
+        frame.setVisible (true);
+    } */
+}
