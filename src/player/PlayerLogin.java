@@ -50,6 +50,9 @@ public  class PlayerLogin {
 				if (token.equals("money")) {
 					p.money = Integer.parseInt(token2);
 				}
+				if (token.equals("level")) {
+					p.playerLevel = Integer.parseInt(token2);
+				}
 			}
 			try {
 				line = playerFile.readLine();
