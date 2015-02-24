@@ -52,6 +52,8 @@ public class Gui extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		PlayerLogin.load(user.getText(), password.getText());
+		Window w = SwingUtilities.getWindowAncestor(this);
+		w.setVisible(false);
 	}
     
     
