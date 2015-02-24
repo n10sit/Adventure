@@ -1,4 +1,4 @@
-package main;
+package gui;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,7 +9,7 @@ import javax.swing.*;
 import player.PlayerLogin;
 
 @SuppressWarnings("serial")
-public class Gui extends JPanel implements ActionListener {
+public class LoginGui extends JPanel implements ActionListener {
     private JLabel logonlabel;
     private JTextField password;
     private JTextField user;
@@ -18,7 +18,7 @@ public class Gui extends JPanel implements ActionListener {
     private JLabel passwordlabel;
     private JButton jcomp6;
     
-    public Gui() {
+    public LoginGui() {
       
         logonlabel = new JLabel ("Login to Game");
         password = new JTextField (5);
@@ -54,6 +54,12 @@ public class Gui extends JPanel implements ActionListener {
 		PlayerLogin.load(user.getText(), password.getText());
 		Window w = SwingUtilities.getWindowAncestor(this);
 		w.setVisible(false);
+		JFrame frame = new JFrame ("");
+        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add (new WalkingGui());
+        frame.pack();
+        frame.setResizable(false);
+        frame.setVisible (true);
 	}
     
     
