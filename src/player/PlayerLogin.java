@@ -57,6 +57,7 @@ public  class PlayerLogin {
 				}
 				if (token.equals("items")) {
 					p.items[Integer.parseInt(token3[0])] = Integer.parseInt(token3[1]);
+					p.itemsAmt[Integer.parseInt(token3[0])] = Integer.parseInt(token3[2]);
 				}
 			}
 			try {
