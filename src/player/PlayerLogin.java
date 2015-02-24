@@ -13,6 +13,7 @@ public  class PlayerLogin {
 		String line = "";
 		String token = "";
 		String token2 = "";
+		String[] token3 = new String[3];
 		boolean fileFound = true;
 		BufferedReader playerFile = null;
 		boolean endOfFile = false;
@@ -39,6 +40,7 @@ public  class PlayerLogin {
 				token = token.trim();
 				token2 = line.substring(spot + 1);
 				token2 = token2.trim();
+				token3 = token2.split("\t");
 				if (token.equals("pass")) {
 					if (pass2.equalsIgnoreCase(token2)) {
 						pass2.equals(token2);
@@ -52,6 +54,9 @@ public  class PlayerLogin {
 				}
 				if (token.equals("level")) {
 					p.playerLevel = Integer.parseInt(token2);
+				}
+				if (token.equals("items")) {
+					p.items[Integer.parseInt(token3[0])] = Integer.parseInt(token3[1]);
 				}
 			}
 			try {
@@ -87,6 +92,17 @@ public  class PlayerLogin {
 			playerFile.write("level = ", 0, 8);
 			playerFile.write(Integer.toString(p.playerLevel), 0, Integer.toString(p.playerLevel).length());
 			playerFile.newLine();
+			for (int i = 0; i < p.items.length; i++) {
+				if (p.items[i] > 0) {
+					playerFile.write("character-item = ", 0, 17);
+					playerFile.write(Integer.toString(i), 0, Integer.toString(i).length());
+					playerFile.write("	", 0, 1);
+					playerFile.write(Integer.toString(p.items[i]), 0, Integer.toString(p.items[i]).length());
+					playerFile.write("	", 0, 1);
+					playerFile.write(Integer.toString(p.itemsAmt[i]), 0, Integer.toString(p.itemsAmt[i]).length());
+					playerFile.newLine();
+				}
+			}
 			playerFile.write("[EOF]", 0, 5);
 			playerFile.newLine();
 			playerFile.newLine();
