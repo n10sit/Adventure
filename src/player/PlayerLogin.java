@@ -9,7 +9,9 @@ import java.io.IOException;
 
 public  class PlayerLogin {
 	
-	public static void load(Player p, String name2, String pass2) {
+	
+	
+	public static void load(String name2, String pass2) {
 		String line = "";
 		String token = "";
 		String token2 = "";
@@ -18,12 +20,13 @@ public  class PlayerLogin {
 		BufferedReader playerFile = null;
 		boolean endOfFile = false;
 		try {
-			playerFile = new BufferedReader(new FileReader("./players/"+name2+".txt"));
+			playerFile = new BufferedReader(new FileReader("./data/"+name2+".txt"));
 		} catch (FileNotFoundException fnfe) {
 			fileFound = false;
 		}
 		if (!fileFound) {
-			p = new Player();
+			Player p = new Player(name2, pass2, 0, 0, new int[28], new int[28]);
+			save(p);
 			return;
 		} else {
 			try {
@@ -49,15 +52,18 @@ public  class PlayerLogin {
 						return;
 					}
 				}
+				
+				Player p2 = new Player(name2, pass2, 0, 0, new int[28], new int[28]);
+				
 				if (token.equals("money")) {
-					p.money = Integer.parseInt(token2);
+					p2.money = Integer.parseInt(token2);
 				}
 				if (token.equals("level")) {
-					p.playerLevel = Integer.parseInt(token2);
+					p2.playerLevel = Integer.parseInt(token2);
 				}
 				if (token.equals("items")) {
-					p.items[Integer.parseInt(token3[0])] = Integer.parseInt(token3[1]);
-					p.itemsAmt[Integer.parseInt(token3[0])] = Integer.parseInt(token3[2]);
+					p2.items[Integer.parseInt(token3[0])] = Integer.parseInt(token3[1]);
+					p2.itemsAmt[Integer.parseInt(token3[0])] = Integer.parseInt(token3[2]);
 				}
 			}
 			try {
@@ -68,6 +74,7 @@ public  class PlayerLogin {
 		}
 		try {
 			playerFile.close();
+			System.out.println("loaded for "+name2+" with password "+pass2+"");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -75,11 +82,12 @@ public  class PlayerLogin {
 	
 	public static void save(Player p) {
 		if(p.name == null) {
+			System.out.println("name is null");
 			return;
 		}
 		BufferedWriter playerFile = null;
 		try {
-			playerFile = new BufferedWriter(new FileWriter("./players/"+p.name+".txt"));
+			playerFile = new BufferedWriter(new FileWriter("./data/"+p.name+".txt"));
 			
 			playerFile.write("name = ", 0, 7);
 			playerFile.write(p.name, 0, p.name.length());
@@ -108,6 +116,7 @@ public  class PlayerLogin {
 			playerFile.newLine();
 			playerFile.newLine();
 			playerFile.close();
+			System.out.println("saved for"+p.name);
 		} catch (IOException oops) {
 			return;
 		}

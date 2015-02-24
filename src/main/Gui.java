@@ -1,27 +1,33 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.event.*;
+package main;
 
-public class guilogin extends JPanel {
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+
+import player.PlayerLogin;
+
+@SuppressWarnings("serial")
+public class Gui extends JPanel implements ActionListener {
     private JLabel logonlabel;
-    private JPasswordField password;
+    private JTextField password;
     private JTextField user;
     
     private JLabel userlabel;
     private JLabel passwordlabel;
     private JButton jcomp6;
-
-    public guilogin() {
+    
+    public Gui() {
       
         logonlabel = new JLabel ("Login to Game");
-        password = new JPasswordField (5);
+        password = new JTextField (5);
         user = new JTextField (5);
         userlabel = new JLabel ("Username:");
         passwordlabel = new JLabel ("Password:");
         jcomp6 = new JButton ("Enter");
 
-        setPreferredSize (new Dimension (95, 41));
+        setPreferredSize (new Dimension (400, 400));
         setLayout (null);
         
         add (logonlabel);
@@ -32,12 +38,23 @@ public class guilogin extends JPanel {
         add (jcomp6);
 
         logonlabel.setBounds (80, 0, 150, 25);
-        password.setBounds (-5, 185, 100, 25);
+        password.setBounds (0, 185, 100, 25);
         user.setBounds (0, 105, 100, 25);
         userlabel.setBounds (0, 80, 100, 25);
         passwordlabel.setBounds (0, 165, 100, 25);
         jcomp6.setBounds (290, 240, 100, 25);
+        
+        jcomp6.addActionListener(this);
+        
+        
     }
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		PlayerLogin.load(user.getText(), password.getText());
+	}
+    
+    
 
    /* stuff we need to add to the main
     public static void main (String[] args) {

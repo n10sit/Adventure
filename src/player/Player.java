@@ -1,20 +1,24 @@
 package player;
 
 public class Player {
+	
+	//public int id = 0;
 
-	public String name, pass;
+	public String name, pass = "";
 	
-	public int money, playerLevel;
+	public int money, playerLevel = 0;
 	
-	public int[] items, itemsAmt;
+	public int[] items, itemsAmt = new int[28];
 	
-	public Player() {
-		for (int i = 0; i < items.length; i++) {
-			items[i] = 0;
-			itemsAmt[i] = 0;
-		}
-		playerLevel = 0;
-		money = 50;
+	Player() {}
+	public Player(String name, String pass, int money, int playerLevel, int[] items, int[] itemsAmt) {
+		//this.id = id;
+		this.name = name;
+		this.pass = pass;
+		this.money = money;
+		this.playerLevel = playerLevel;
+		this.items = items;
+		this.itemsAmt = itemsAmt;
 	}
 	
 }

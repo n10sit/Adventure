@@ -1,0 +1,6 @@
+name = 
+pass = 
+money = 0
+level = 0
+[EOF]
+
