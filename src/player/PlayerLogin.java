@@ -78,8 +78,14 @@ public  class PlayerLogin {
 			playerFile.write("name = ", 0, 7);
 			playerFile.write(p.name, 0, p.name.length());
 			playerFile.newLine();
+			playerFile.write("pass = ", 0, 7);
+			playerFile.write(p.pass, 0, p.pass.length());
+			playerFile.newLine();
 			playerFile.write("money = ", 0, 8);
 			playerFile.write(Integer.toString(p.money), 0, Integer.toString(p.money).length());
+			playerFile.newLine();
+			playerFile.write("level = ", 0, 8);
+			playerFile.write(Integer.toString(p.playerLevel), 0, Integer.toString(p.playerLevel).length());
 			playerFile.newLine();
 			playerFile.write("[EOF]", 0, 5);
 			playerFile.newLine();
