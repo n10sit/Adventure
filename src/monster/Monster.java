@@ -11,7 +11,7 @@ public class Monster {
 	public boolean alive;
 	
 	public Example example = new Example(this);
-	
+	public RabidDog rabidDog = new RabidDog(this);
 	public Monster(int id, int level, int attack, int defence, int hp, String name) {
 		this.id = id;
 		this.level = level;
@@ -24,6 +24,9 @@ public class Monster {
 	
 	public Example getExample() {
 		return example;
+	}
+	public RabidDog getRabidDog() {
+		return rabidDog;
 	}
 
 }
