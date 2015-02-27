@@ -6,43 +6,51 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import player.Player;
+
 @SuppressWarnings("serial")
 public class WalkingGui extends JPanel implements ActionListener {
-    private JButton jcomp1;
-    private JButton jcomp2;
-    private JButton jcomp3;
-    private JButton jcomp5;
+    private JButton west;
+    private JButton south;
+    private JButton north;
+    private JButton east;
     private JLabel label;
 
     public WalkingGui() {
  
-        jcomp1 = new JButton ("W");
-        jcomp2 = new JButton ("S");
-        jcomp3 = new JButton ("N");
-        jcomp5 = new JButton ("E");
+        west = new JButton ("W");
+        south = new JButton ("S");
+        north = new JButton ("N");
+        east = new JButton ("E");
         label = new JLabel("Walking");
 
         setPreferredSize (new Dimension (170, 170));
         setLayout (null);
 
-        add (jcomp1);
-        add (jcomp2);
-        add (jcomp3);
-        add (jcomp5);
+        add (west);
+        add (south);
+        add (north);
+        add (east);
         add (label);
 
         //set component bounds (only needed by Absolute Positioning)
-        jcomp1.setBounds (0, 60, 60, 60);
-        jcomp2.setBounds (60, 120, 60, 60);
-        jcomp3.setBounds (60, 0, 60, 60);
-        jcomp5.setBounds (120, 60, 60, 60);
+        west.setBounds (0, 60, 60, 60);
+        south.setBounds (60, 120, 60, 60);
+        north.setBounds (60, 0, 60, 60);
+        east.setBounds (120, 60, 60, 60);
         label.setBounds(67, 80, 60, 20);
+        
+        west.addActionListener(this);
+        south.addActionListener(this);
+        north.addActionListener(this);
+        east.addActionListener(this);
     }
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+		if (e.getSource().equals(north)) {
+			//Player.y++;
+		}
 	}
     
 

@@ -2,5 +2,7 @@ name = john
 pass = john
 money = 0
 level = 0
+x = 0
+y = 0
 [EOF]
 

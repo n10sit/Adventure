@@ -15,11 +15,15 @@ import player.Player;
 public class MapGui extends JPanel {
 	
 	@SuppressWarnings("unused")
+	private Player pl;
+	
+	@SuppressWarnings("unused")
 	private Image background;
 	private BufferedImage map;
 	private BufferedImage player;
 
-	public MapGui() {
+	public MapGui(Player play) {
+		this.pl = play;
 		setPreferredSize(new Dimension(250, 200));
 		setLayout(null);
 		try {
@@ -32,12 +36,6 @@ public class MapGui extends JPanel {
 		} catch (Exception i) {
 			i.printStackTrace();
 		}
-		JLabel x = new JLabel("X: "+Player.x);
-		JLabel y = new JLabel("Y: "+Player.y);
-		x.setBounds(230, 50, 25, 20);
-		y.setBounds(230, 75, 25, 20);
-		add(x);
-		add(y);
 	}
 	
 	@Override

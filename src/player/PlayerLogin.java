@@ -1,5 +1,7 @@
 package player;
 
+import gui.LoginGui;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -7,12 +9,25 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import javax.swing.JFrame;
+
 public  class PlayerLogin {
 	
+	private static Player player;
+	public PlayerLogin(Player player_) {
+		PlayerLogin.player = player_;
+	}
 	
+	public static void start() {
+		 JFrame frame = new JFrame ("Login");
+	     frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+	     frame.getContentPane().add (new LoginGui(player));
+	     frame.pack();
+	     frame.setResizable(false);
+	     frame.setVisible (true);
+	}
 	
-	@SuppressWarnings("static-access")
-	public static boolean load(String name2, String pass2) {
+	public static boolean load(Player p2, String name2, String pass2) {
 		String line = "";
 		String token = "";
 		String token2 = "";
@@ -26,8 +41,7 @@ public  class PlayerLogin {
 			fileFound = false;
 		}
 		if (!fileFound) {
-			Player p = new Player(name2, pass2, 0, 0, new int[28], new int[28], 0, 0);
-			save(p);
+	
 			return false;
 		} else {
 			try {
@@ -53,8 +67,6 @@ public  class PlayerLogin {
 						return false;
 					}
 				}
-				
-				Player p2 = new Player(name2, pass2, 0, 0, new int[28], new int[28], 0, 0);
 				
 				if (token.equals("money")) {
 					p2.money = Integer.parseInt(token2);
@@ -89,7 +101,6 @@ public  class PlayerLogin {
 		return false;
 	}
 	
-	@SuppressWarnings("static-access")
 	public static boolean save(Player p) {
 		if(p.name == null) {
 			System.out.println("name is null");

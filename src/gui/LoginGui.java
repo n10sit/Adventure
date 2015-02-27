@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import main.Main;
+import player.Player;
 import player.PlayerLogin;
 
 @SuppressWarnings("serial")
@@ -18,8 +20,10 @@ public class LoginGui extends JPanel implements ActionListener {
     private JLabel passwordlabel;
     private JButton jcomp6;
     
-    public LoginGui() {
-      
+    private Player player;
+    
+    public LoginGui(Player player) {
+    	this.player = player;
         logonlabel = new JLabel ("Login to Game");
         password = new JTextField (5);
         user = new JTextField (5);
@@ -48,20 +52,43 @@ public class LoginGui extends JPanel implements ActionListener {
         
         
     }
+    
+    public void load(String name, String pass) {
+    	name = name.trim();
+		name = name.toLowerCase();
+		pass = pass.toLowerCase();
+		if(!name.matches("[A-Za-z0-9 ]+")) {
+			System.out.println("bad character");
+			return;
+		}
+		if(name.length() > 12) {
+			System.out.println("too long");
+			return;
+		}
+		Player pl = new Player(-1);
+		pl.name = name;
+		pl.pass = pass;
+		
+		PlayerLogin.load(pl, pl.name, pl.pass);
+		if(!Main.playerHandler.newPlayer(pl)) {
+			
+		} else {
+			PlayerLogin.save(pl);
+		}
+    }
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (PlayerLogin.load(user.getText(), password.getText())) {
-			Window w = SwingUtilities.getWindowAncestor(this);
-			w.setVisible(false);
-			JFrame frame = new JFrame ("Adventure");
-        	frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-        	frame.getContentPane().add (new MainGui());
-        	frame.setPreferredSize(new Dimension(500, 800));
-        	frame.pack();
-        	frame.setResizable(false);
-        	frame.setVisible (true);
-		}
+		load(user.getText(), password.getText());
+		Window w = SwingUtilities.getWindowAncestor(this);
+		w.setVisible(false);
+		JFrame frame = new JFrame ("Adventure");
+       	frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+       	frame.getContentPane().add (new MainGui(player));
+       	frame.setPreferredSize(new Dimension(500, 800));
+       	frame.pack();
+       	frame.setResizable(false);
+        frame.setVisible (true);
 	}
     
     

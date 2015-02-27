@@ -7,10 +7,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import player.Player;
+
 @SuppressWarnings("serial")
 public class MainGui extends JPanel implements ActionListener {
 	
-	public MainGui() {
+	private Player p;
+	
+	public MainGui(Player player) {
+		this.p = player;
 		setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 		
@@ -22,7 +27,7 @@ public class MainGui extends JPanel implements ActionListener {
 		gbc.gridy = 0;
 		add(walk, gbc);
 		
-		JPanel map = new MapGui();
+		JPanel map = new MapGui(p);
 		gbc.weightx = 0.5;
 		gbc.fill = GridBagConstraints.BOTH;
 		gbc.gridx = 1;
