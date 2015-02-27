@@ -11,6 +11,7 @@ public  class PlayerLogin {
 	
 	
 	
+	@SuppressWarnings("static-access")
 	public static boolean load(String name2, String pass2) {
 		String line = "";
 		String token = "";
@@ -25,7 +26,7 @@ public  class PlayerLogin {
 			fileFound = false;
 		}
 		if (!fileFound) {
-			Player p = new Player(name2, pass2, 0, 0, new int[28], new int[28]);
+			Player p = new Player(name2, pass2, 0, 0, new int[28], new int[28], 0, 0);
 			save(p);
 			return false;
 		} else {
@@ -53,7 +54,7 @@ public  class PlayerLogin {
 					}
 				}
 				
-				Player p2 = new Player(name2, pass2, 0, 0, new int[28], new int[28]);
+				Player p2 = new Player(name2, pass2, 0, 0, new int[28], new int[28], 0, 0);
 				
 				if (token.equals("money")) {
 					p2.money = Integer.parseInt(token2);
@@ -64,6 +65,12 @@ public  class PlayerLogin {
 				if (token.equals("items")) {
 					p2.items[Integer.parseInt(token3[0])] = Integer.parseInt(token3[1]);
 					p2.itemsAmt[Integer.parseInt(token3[0])] = Integer.parseInt(token3[2]);
+				}
+				if (token.equals("x")) {
+					p2.x = Integer.parseInt(token2);
+				}
+				if (token.equals("y")) {
+					p2.y = Integer.parseInt(token2);
 				}
 			}
 			try {
@@ -82,6 +89,7 @@ public  class PlayerLogin {
 		return false;
 	}
 	
+	@SuppressWarnings("static-access")
 	public static boolean save(Player p) {
 		if(p.name == null) {
 			System.out.println("name is null");
@@ -114,6 +122,12 @@ public  class PlayerLogin {
 					playerFile.newLine();
 				}
 			}
+			playerFile.write("x = ", 0, 4);
+			playerFile.write(Integer.toString(p.x), 0, Integer.toString(p.x).length());
+			playerFile.newLine();
+			playerFile.write("y = ", 0, 4);
+			playerFile.write(Integer.toString(p.y), 0, Integer.toString(p.y).length());
+			playerFile.newLine();
 			playerFile.write("[EOF]", 0, 5);
 			playerFile.newLine();
 			playerFile.newLine();
