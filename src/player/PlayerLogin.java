@@ -11,7 +11,7 @@ public  class PlayerLogin {
 	
 	
 	
-	public static void load(String name2, String pass2) {
+	public static boolean load(String name2, String pass2) {
 		String line = "";
 		String token = "";
 		String token2 = "";
@@ -27,7 +27,7 @@ public  class PlayerLogin {
 		if (!fileFound) {
 			Player p = new Player(name2, pass2, 0, 0, new int[28], new int[28]);
 			save(p);
-			return;
+			return false;
 		} else {
 			try {
 				line = playerFile.readLine();
@@ -49,7 +49,7 @@ public  class PlayerLogin {
 						pass2.equals(token2);
 					} else {
 						System.out.println("Incorrect password.");
-						return;
+						return false;
 					}
 				}
 				
@@ -75,15 +75,17 @@ public  class PlayerLogin {
 		try {
 			playerFile.close();
 			System.out.println("loaded for "+name2+" with password "+pass2+"");
+			return true;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return false;
 	}
 	
-	public static void save(Player p) {
+	public static boolean save(Player p) {
 		if(p.name == null) {
 			System.out.println("name is null");
-			return;
+			return false;
 		}
 		BufferedWriter playerFile = null;
 		try {
@@ -117,8 +119,10 @@ public  class PlayerLogin {
 			playerFile.newLine();
 			playerFile.close();
 			System.out.println("saved for"+p.name);
+			return true;
 		} catch (IOException oops) {
-			return;
+			oops.printStackTrace();
+			return false;
 		}
 	}
 	

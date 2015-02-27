@@ -13,8 +13,8 @@ public class MainGui extends JPanel implements ActionListener {
 		JPanel map = new MapGui();
 		JPanel walk = new WalkingGui();
 		setLayout(new GridLayout(2, 1));
-		map.setBounds(0, 700, 100, 100);
-		walk.setBounds(0, 500, 170, 170);
+		//map.setBounds(0, 700, 100, 100);
+		//walk.setBounds(0, 500, 170, 170);
 		add (map);
 		add (walk);
 	}
