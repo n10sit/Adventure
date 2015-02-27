@@ -2,10 +2,7 @@ package gui;
 
 
 import java.awt.*;
-import java.awt.event.*;
-
 import javax.swing.*;
-import javax.swing.event.*;
 
 @SuppressWarnings("serial")
 public class Console extends JPanel {
@@ -31,11 +28,11 @@ public class Console extends JPanel {
   }
 
 
-  public static void main (String[] args) {
+  /*public static void main (String[] args) {
       JFrame frame = new JFrame ("Console");
       frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
       frame.getContentPane().add (new Console());
       frame.pack();
       frame.setVisible (true);
-  }
+  }*/
 }

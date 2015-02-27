@@ -13,7 +13,7 @@ public class RabidDog {
 		m.attack = 10;
 		m.defence = 5;
 		m.hp = 15;
-		m.name = "A rabid dog";
+		m.name = "Rabid Dog";
 	}
 	
 	public void create() {
