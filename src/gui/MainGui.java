@@ -11,16 +11,24 @@ import javax.swing.*;
 public class MainGui extends JPanel implements ActionListener {
 	
 	public MainGui() {
-		JPanel map = new MapGui();
-		JPanel walk = new WalkingGui();
 		setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
+		
+		JPanel walk = new WalkingGui();
 		gbc.weightx = 0.5;
 		gbc.weighty = 0.5;
 		gbc.fill = GridBagConstraints.BOTH;
-		gbc.gridx = 1;
+		gbc.gridx = 0;
 		gbc.gridy = 0;
 		add(walk, gbc);
+		
+		JPanel map = new MapGui();
+		gbc.weightx = 0.5;
+		gbc.fill = GridBagConstraints.BOTH;
+		gbc.gridx = 1;
+		gbc.gridy = 0;
+		add(map, gbc);
+		
 	}
 
 	@Override
