@@ -84,7 +84,7 @@ public class LoginGui extends JPanel implements ActionListener {
 		w.setVisible(false);
 		JFrame frame = new JFrame ("Adventure");
        	frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-       	frame.getContentPane().add (new MainGui(player));
+       //	frame.getContentPane().add (new MainGui());
        	frame.setPreferredSize(new Dimension(500, 800));
        	frame.pack();
        	frame.setResizable(false);

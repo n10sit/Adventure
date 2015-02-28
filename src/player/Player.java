@@ -1,7 +1,5 @@
 package player;
 
-import javax.swing.JLabel;
-
 import gui.*;
 
 public class Player {

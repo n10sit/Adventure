@@ -33,6 +33,7 @@ public class MapGui extends JPanel {
 			JLabel p = new JLabel(new ImageIcon(player));
 			p.setBounds(80, 80, 20, 20);
 			add(p);
+			System.out.println(pl.name);
 		} catch (Exception i) {
 			i.printStackTrace();
 		}
