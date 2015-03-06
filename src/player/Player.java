@@ -23,7 +23,8 @@ public class Player {
 	public String name, pass = null;
 	public int money, playerLevel = 0;
 	public int[] items, itemsAmt;
-	public int x, y = 0;
+	public static int x = 0;
+	public static int y = 0;
 	
 	public Player(int _id) {
 		id = _id;
