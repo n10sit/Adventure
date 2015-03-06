@@ -67,11 +67,11 @@ public class Player {
 		
 	}
 	
-	public int getX() {
+	public static int getX() {
 		return x;
 	}
 	
-	public int getY() {
+	public static int getY() {
 		return y;
 	}
 	
