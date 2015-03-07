@@ -43,6 +43,13 @@ public class MainGui extends JPanel implements ActionListener {
 		add(save, gbc);
 		save.addActionListener(this);
 		
+		JLabel coords = new JLabel("Your players coordinates are " + Player.getX() + "," + Player.getY());
+		gbc.weightx = 0.5;
+		gbc.fill = GridBagConstraints.BOTH;
+		gbc.gridx = 2;
+		gbc.gridy = 0;
+		add(coords, gbc);
+		
 	}
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
