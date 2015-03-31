@@ -15,10 +15,15 @@ public class WalkingGui extends JPanel implements ActionListener {
     private JButton north;
     private JButton east;
     private JLabel label;
+    
+    private Player p;
 
-    public WalkingGui() {
- 
-        west = new JButton ("W");
+    public WalkingGui(Player Player) {
+    	this.p = Player;
+    }
+    
+    public void createWalkingGui() {
+    	west = new JButton ("W");
         south = new JButton ("S");
         north = new JButton ("N");
         east = new JButton ("E");
@@ -49,7 +54,8 @@ public class WalkingGui extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(north)) {
-			//Player.y++;
+			p.y++;
+			System.out.println(p.y+"");
 		}
 	}
     

@@ -22,8 +22,8 @@ public class MapGui extends JPanel {
 	private BufferedImage map;
 	private BufferedImage player;
 
-	public MapGui(Player play) {
-		this.pl = play;
+	public MapGui() {
+		
 		setPreferredSize(new Dimension(250, 200));
 		setLayout(null);
 		try {
@@ -33,7 +33,6 @@ public class MapGui extends JPanel {
 			JLabel p = new JLabel(new ImageIcon(player));
 			p.setBounds(80, 80, 20, 20);
 			add(p);
-			System.out.println(pl.name);
 		} catch (Exception i) {
 			i.printStackTrace();
 		}

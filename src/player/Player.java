@@ -1,13 +1,11 @@
 package player;
 
-import gui.*;
-
 public class Player {
 	
 	private PlayerAssistant pa = new PlayerAssistant(this);
-	private MapGui mapg = new MapGui(this);
+	/*private MapGui mapg = new MapGui(this);
 	private MainGui maing = new MainGui(this);
-	private LoginGui lg = new LoginGui(this);
+	private LoginGui lg = new LoginGui(this);*/
 	
 	public int id = -1;
 	public PlayerHandler handler = null;
@@ -23,8 +21,8 @@ public class Player {
 	public String name, pass = null;
 	public int money, playerLevel = 0;
 	public int[] items, itemsAmt;
-	public static int x = 0;
-	public static int y = 0;
+	public int x = 0;
+	public int y = 0;
 	
 	public Player(int _id) {
 		id = _id;
@@ -68,11 +66,11 @@ public class Player {
 		
 	}
 	
-	public static int getX() {
+	public int getX() {
 		return x;
 	}
 	
-	public static int getY() {
+	public int getY() {
 		return y;
 	}
 	
@@ -98,7 +96,7 @@ public class Player {
 		return pa;
 	}
 	
-	public MapGui getMap() {
+	/*public MapGui getMap() {
 		return mapg;
 	}
 	
@@ -108,6 +106,6 @@ public class Player {
 	
 	public LoginGui getLogin() {
 		return lg;
-	}
+	}*/
 	
 }

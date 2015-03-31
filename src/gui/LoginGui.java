@@ -20,11 +20,14 @@ public class LoginGui extends JPanel implements ActionListener {
     private JLabel passwordlabel;
     private JButton jcomp6;
     
-    private Player player;
+    private Player p;
     
-    public LoginGui(Player player) {
-    	this.player = player;
-        logonlabel = new JLabel ("Login to Game");
+    public LoginGui(Player Player) {
+    	this.p = Player;
+    }
+    
+    public void createLoginGui() {
+    	logonlabel = new JLabel ("Login to Game");
         password = new JTextField (5);
         user = new JTextField (5);
         userlabel = new JLabel ("Username:");
@@ -49,8 +52,6 @@ public class LoginGui extends JPanel implements ActionListener {
         jcomp6.setBounds (290, 240, 100, 25);
         
         jcomp6.addActionListener(this);
-        
-        
     }
     
     public void load(String name, String pass) {
@@ -84,7 +85,7 @@ public class LoginGui extends JPanel implements ActionListener {
 		w.setVisible(false);
 		JFrame frame = new JFrame ("Adventure");
        	frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-       //	frame.getContentPane().add (new MainGui());
+        frame.getContentPane().add (new MainGui(p));
        	frame.setPreferredSize(new Dimension(500, 800));
        	frame.pack();
        	frame.setResizable(false);

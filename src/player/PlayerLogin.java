@@ -11,17 +11,12 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 
-public  class PlayerLogin {
-	
-	private static Player player;
-	public PlayerLogin(Player player_) {
-		PlayerLogin.player = player_;
-	}
+public class PlayerLogin {
 	
 	public static void start() {
 		 JFrame frame = new JFrame ("Login");
 	     frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-	     frame.getContentPane().add (new LoginGui(player));
+	     frame.getContentPane().add (LoginGui.createLoginGui());
 	     frame.pack();
 	     frame.setResizable(false);
 	     frame.setVisible (true);
@@ -143,7 +138,7 @@ public  class PlayerLogin {
 			playerFile.newLine();
 			playerFile.newLine();
 			playerFile.close();
-			System.out.println("saved for"+p.name);
+			System.out.println("saved for "+p.name);
 			return true;
 		} catch (IOException oops) {
 			oops.printStackTrace();

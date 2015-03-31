@@ -10,17 +10,20 @@ import javax.swing.*;
 import player.Player;
 import player.PlayerLogin;
 
-@SuppressWarnings("serial")
+@SuppressWarnings({ "serial", "unused" })
 public class MainGui extends JPanel implements ActionListener {
 	
 	private Player p;
 	
-	public MainGui(Player player) {
-		this.p = player;
+	public MainGui(Player Player) {
+		this.p = Player;
+	}
+	
+	public void createMainGui() {
 		setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 			
-		JPanel walk = new WalkingGui();
+		JPanel walk = new WalkingGui(p);
 		gbc.weightx = 0.5;
 		gbc.weighty = 0.5;
 		gbc.fill = GridBagConstraints.BOTH;
@@ -28,7 +31,7 @@ public class MainGui extends JPanel implements ActionListener {
 		gbc.gridy = 0;
 		add(walk, gbc);
 			
-		JPanel map = new MapGui(p);
+		JPanel map = new MapGui();
 		gbc.weightx = 0.5;
 		gbc.fill = GridBagConstraints.BOTH;
 		gbc.gridx = 1;
@@ -43,18 +46,19 @@ public class MainGui extends JPanel implements ActionListener {
 		add(save, gbc);
 		save.addActionListener(this);
 		
-		JLabel coords = new JLabel("Your players coordinates are " + Player.getX() + "," + Player.getY());
+		/*JLabel coords = new JLabel("Your players coordinates are " + Player.getX() + "," + Player.getY());
 		gbc.weightx = 0.5;
 		gbc.fill = GridBagConstraints.BOTH;
 		gbc.gridx = 2;
 		gbc.gridy = 0;
-		add(coords, gbc);
+		add(coords, gbc);*/
 		
 	}
+	
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			PlayerLogin.save(p);
-			System.out.println("Saved!!!");
+			//PlayerLogin.save(p);
+			//System.out.println("Saved!!!");
 		}
 	
 }

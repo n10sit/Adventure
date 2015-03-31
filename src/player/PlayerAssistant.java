@@ -1,7 +1,5 @@
 package player;
 
-import javax.swing.JLabel;
-
 public class PlayerAssistant {
 	
 	private Player p;
